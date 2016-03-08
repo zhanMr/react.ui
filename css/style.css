@@ -1,3 +1,32 @@
-body {
-    background: #fff;
+*{
+    padding:0px;
+    margin:0px;
+    list-style:none
+}
+.js_calendar_title{
+    color:#fff;
+    border-bottom:1px solid #666;
+    background-color:#099fde
+}
+.js_calendar div{
+    width:100%;
+    overflow:hidden;
+    text-align:center;
+    margin-bottom: 10px
+}
+.js_calendar li{
+    float:left;
+    width:14%;
+    padding:10px 0;
+}
+.js_calendar h3{
+    font-size: 14px;
+    padding: 10px 0;
+}
+.js_calendar_gray{
+    color:#999;
+}
+.js_calendar_selected{
+    color:#fff;
+    background-color:#099fde
 }
