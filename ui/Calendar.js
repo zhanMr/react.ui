@@ -4,7 +4,7 @@ var Calendar = React.createClass({
     getDefaultProps: function(){
         return  {
             'startDate': null,//起始日期
-            'mos': 2, //要显示的月数,
+            'mos': 3, //要显示的月数,
             'week': ['日', '一', '二', '三', '四', '五', '六'],
             'tips': ['今天', '明天', '后天'],
             'selected': '2016-3-30',

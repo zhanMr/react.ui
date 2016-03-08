@@ -1,8 +1,7 @@
-require("./css/style.css");
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Calendar = require('./ui/Calendar');
-
+require('./css/style.css');
+import React from 'react';
+import ReactDOM  from 'react-dom';
+import Calendar  from './ui/Calendar';
 ReactDOM.render(
     <Calendar />,
     document.getElementById('Calendar')

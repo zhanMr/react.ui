@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 module.exports = {
     devtool: "#inline-source-map",
     entry: "./entry.js",
@@ -7,8 +8,12 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.css$/, loader: "style!css" },
-            { test: /\.jsx?$/, loaders: ['jsx-loader?harmony']}
+            { test: /\.js$/, loaders: ['babel?stage=0'] },
+            { test: /\.css$/, loader: "style!css" }
         ]
-    }
+    },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ]
 };
