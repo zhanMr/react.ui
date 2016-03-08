@@ -11,9 +11,5 @@ module.exports = {
             { test: /\.js$/, loaders: ['babel?stage=0'] },
             { test: /\.css$/, loader: "style!css" }
         ]
-    },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
-    ]
+    }
 };
