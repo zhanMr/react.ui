@@ -30,3 +30,13 @@
     color:#fff;
     background-color:#099fde
 }
+
+
+.room_num{width: 82px;height: 28px;line-height: 28px;color: #666;background-color: #FFF;text-align: center;border: 1px solid #e4e4e4;position: relative;left: auto;right: auto;top: auto;margin-top: 0;display: inline-block;vertical-align: middle;margin-right: 6px;border-radius: 4px;}
+.room_num i{position: absolute;width: 27px;height: 28px;text-align: center;font: 400 26px/28px Arial;background: none;}
+.room_num i:first-child{left: 0;color: #009ee4;font: 400 34px/24px Arial;border-right: 1px solid #e4e4e4;border-radius: 4px 0 0 4px;}
+.room_num i:last-child{right: 0;color: #009ee4;border-left: 1px solid #e4e4e4;border-radius: 0 4px 4px 0;}
+.room_num .list_num{display: inline-block;width: 28px;height: 28px;line-height: 26px;font-size: 16px;vertical-align: top;white-space: nowrap;overflow: hidden;}
+.room_num .list_num_dec ~ .list_num{color: #FFF;background-color: #009de3;border-color: #009de3;}
+.room_num .num_invalid ~ .list_num{color: #000;background: none;border-color: #e5e5e5;}
+.room_num .num_invalid{background: none;color: #d9d9d9!important }

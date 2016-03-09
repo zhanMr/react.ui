@@ -8,12 +8,17 @@ const Calendar = React.createClass({
         'selected': React.PropTypes.string,
         'holiday': React.PropTypes.object
     },
+    getInitialState: function(){
+       return {
+           'selected': ''
+       }
+    },
     getDefaultProps: function(){
         return  {
             'startDate': null,//起始日期
-            'mos': 3, //要显示的月数,
+            'mos': 2, //要显示的月数,
             'week': ['日', '一', '二', '三', '四', '五', '六'],
-            'selected': '2016-3-30',
+           // 'selected': '',
             //节日
             'holiday':{
                 '3-8': '妇女节',
@@ -23,10 +28,13 @@ const Calendar = React.createClass({
         }
     },
     handleClick: function(date){
-        console.log(date);
+        this.setState({
+            'selected': date.getFullYear()  + '-' + (date.getMonth() + 1) + '-' + date.getDate()
+        });
     },
     render() {
-        let {holiday, mos, week, selected} = this.props;
+        let {holiday, mos, week} = this.props;
+        let {selected} = this.state;
         let startDate = this.props.startDate || new Date();
         let[year, month, date, key, data] = [startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), 0, []];
         for(let i = 0; i < mos; i++){
