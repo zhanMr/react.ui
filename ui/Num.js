@@ -1,5 +1,5 @@
 import React from 'react';
-const Number = React.createClass({
+const Num = React.createClass({
     getInitialState: function(){
         return {
             defaultNumber: this.props.defaultNumber
@@ -10,26 +10,29 @@ const Number = React.createClass({
             defaultNumber: 2,
             minMunber: 0,
             maxNumber: 10,
-            stepNumber: 1
+            stepNumber: 1,
+            selectNumber: () => {}
         }
     },
     addNumber: function(){
         let{defaultNumber} = this.state;
-        let{maxNumber, stepNumber} = this.props;
+        let{maxNumber, stepNumber, selectNumber} = this.props;
         defaultNumber += stepNumber;
         if(defaultNumber > maxNumber) return;
         this.setState({
             defaultNumber: defaultNumber
         });
+        console.log(selectNumber(defaultNumber));
     },
     subNumber: function(){
         let{defaultNumber} = this.state;
-        let{minNumber, stepNumber} = this.props;
+        let{minNumber, stepNumber, selectNumber} = this.props;
         defaultNumber -= stepNumber;
         if(defaultNumber < minNumber) return;
         this.setState({
             defaultNumber: defaultNumber
         });
+        console.log(selectNumber(defaultNumber));
     },
     render(){
         let{defaultNumber} = this.state;
@@ -45,4 +48,4 @@ const Number = React.createClass({
         )
     }
 });
-module.exports = Number;
+module.exports = Num;
