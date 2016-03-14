@@ -34,18 +34,19 @@ const Num = React.createClass({
         });
         console.log(selectNumber(defaultNumber));
     },
-    render(){
+    render: function(){
         let{defaultNumber} = this.state;
         let{minNumber, maxNumber, stepNumber} = this.props;
-        let minClass = defaultNumber - stepNumber < minNumber ? 'num_invalid' : '';
-        let maxClass = defaultNumber + stepNumber > maxNumber ? 'num_invalid' : '';
+        let minClass = defaultNumber - stepNumber < minNumber ? 'disabled' : '';
+        let maxClass = defaultNumber + stepNumber > maxNumber ? 'disabled' : '';
         return(
-           <div className="room_num">
-               <i className={`list_num_dec ${minClass}`} onClick={this.subNumber}>-</i>
-               <span className="list_num">{defaultNumber}</span>
-               <i className={`list_num_inc ${maxClass}`} onClick={this.addNumber}>+</i>
+           <div className="cm-num-adjust">
+               <i className={`cm-adjust-minus ${minClass}`} onClick={this.subNumber}>-</i>
+               <input type="tel" className="cm-adjust-view" defaultValue={defaultNumber}/>
+               <i className={`cm-adjust-plus ${maxClass}`} onClick={this.addNumber}>+</i>
            </div>
         )
     }
 });
-module.exports = Num;
+export default Num;
+

@@ -2,11 +2,11 @@
 import React from 'react';
 const Calendar = React.createClass({
     propTypes:{
-        'startDate': React.PropTypes.object,
-        'mos': React.PropTypes.number,
-        'week': React.PropTypes.array,
-        'selected': React.PropTypes.string,
-        'holiday': React.PropTypes.object
+        start: React.PropTypes.object,
+        member: React.PropTypes.number,
+        week: React.PropTypes.array,
+        selected: React.PropTypes.string,
+        holiday: React.PropTypes.object
     },
     getInitialState: function(){
        return {
@@ -15,16 +15,11 @@ const Calendar = React.createClass({
     },
     getDefaultProps: function(){
         return  {
-            'startDate': null,//起始日期
-            'mos': 2, //要显示的月数,
-            'week': ['日', '一', '二', '三', '四', '五', '六'],
-           // 'selected': '',
+            start: null,//起始日期
+            member: 1, //要显示的月数,
+            week: ['日', '一', '二', '三', '四', '五', '六'],
             //节日
-            'holiday':{
-                '3-8': '妇女节',
-                '5-1': '劳动节',
-                '10-1': '国过节'
-            }
+            holiday: {}
         }
     },
     handleClick: function(date){
@@ -32,12 +27,12 @@ const Calendar = React.createClass({
             'selected': date.getFullYear()  + '-' + (date.getMonth() + 1) + '-' + date.getDate()
         });
     },
-    render() {
-        let {holiday, mos, week} = this.props;
+    render: function() {
+        let {holiday, member, week} = this.props;
         let {selected} = this.state;
-        let startDate = this.props.startDate || new Date();
-        let[year, month, date, key, data] = [startDate.getFullYear(), startDate.getMonth(), startDate.getDate(), 0, []];
-        for(let i = 0; i < mos; i++){
+        let start = this.props.start || new Date();
+        let[year, month, date, key, data] = [start.getFullYear(), start.getMonth(), start.getDate(), 0, []];
+        for(let i = 0; i < member; i++){
             month ++;
             if(month > 12){
                 month = 1;
@@ -52,7 +47,7 @@ const Calendar = React.createClass({
                 allDay.push(<li key={key++}></li>);
             }
             for(let m = 1; m <= day; m++){
-                allDay.push(<li key={key++} onClick={this.handleClick.bind(this, new Date(year, month -1, m))} className={year + '-' + month + '-' + m == selected ? 'js_calendar_selected' : !i && m < date ? 'js_calendar_gray' : ''}>{holiday[month + '-' + m] || m}</li>);
+                allDay.push(<li key={key++} onClick={this.handleClick.bind(this, new Date(year, month -1, m))} className={year + '-' + month + '-' + m == selected ? 'cui_cld_selected' : !i && m < date ? 'cui_cld_expire' : ''}>{holiday[month + '/' + m] || m}</li>);
             }
             data.push({
                 'title': year + '年' + month + '月',
@@ -60,26 +55,22 @@ const Calendar = React.createClass({
             })
         }
         return (
-            <div className="js_calendar">
-                <div className="js_calendar_title">
-                    <ul>
-                    {week.map(function(item, index){
-                        return(<li key={index}>{item}</li>)
+            <div>
+                <ul className="cui_cldweek" style={{position:"static"}}>
+                    {week.map((item, index) => { return(<li key={index}>{item}</li>)})}
+                </ul>
+                <section className="cui_cldunit">
+                    {data.map((item, index) => {
+                        return(
+                            <div key={index}>
+                                <h1 className="cui_cldmonth">{item.title}</h1>
+                                <ul className="cui_cld_daybox">{item.allDay}</ul>
+                            </div>
+                        )
                     })}
-                    </ul>
-                </div>
-                <div className="js_calendar_info">
-                {data.map(function(item, index){
-                    return(
-                        <div key={index}>
-                            <h3>{item.title}</h3>
-                            <ul>{item.allDay}</ul>
-                        </div>
-                    )
-                })}
-                </div>
+                </section>
             </div>
         );
     }
-})
-module.exports = Calendar;
+});
+export default Calendar;
