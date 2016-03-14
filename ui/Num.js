@@ -24,6 +24,9 @@ const Num = React.createClass({
         });
         console.log(selectNumber(defaultNumber));
     },
+    changeValue: function(){
+
+    },
     subNumber: function(){
         let{defaultNumber} = this.state;
         let{minNumber, stepNumber, selectNumber} = this.props;
@@ -42,7 +45,7 @@ const Num = React.createClass({
         return(
            <div className="cm-num-adjust">
                <i className={`cm-adjust-minus ${minClass}`} onClick={this.subNumber}>-</i>
-               <input type="tel" className="cm-adjust-view" defaultValue={defaultNumber}/>
+               <input type="tel" className="cm-adjust-view"  value={defaultNumber} onChange={this.changeValue}/>
                <i className={`cm-adjust-plus ${maxClass}`} onClick={this.addNumber}>+</i>
            </div>
         )
