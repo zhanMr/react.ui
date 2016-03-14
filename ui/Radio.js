@@ -19,10 +19,12 @@ const Radio = React.createClass({
         this.setState({
             visible: true
         },()=>{
-            this.scroll = new IScroll(this.refs.wrapper, {
-                mouseWheel: true,
-                scrollbars: false
-            })
+            if(!this.scroll){
+                this.scroll = new IScroll(this.refs.wrapper, {
+                    mouseWheel: true,
+                    scrollbars: false
+                })
+            }
         })
     },
     getInitialState: function(){
