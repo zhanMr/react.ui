@@ -10,7 +10,7 @@ const Mask = {
             display: 'block'
         };
         return (
-            <div className="view cui-mask" style={style} onClick={this.hideMask} ref="cuiMask"></div>
+            <div className="view cui-mask" style={style} onClick={this.hideMask}></div>
         )
     }
 };
