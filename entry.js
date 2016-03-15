@@ -6,6 +6,7 @@ import Num  from './ui/Num';
 import Radio  from './ui/Radio';
 import Tab from './ui/Tab';
 import Switch from './ui/Switch';
+import Alert from './ui/Alert';
 let initUi = item => {
     let div = document.createElement('div');
     div.style.padding = "10px 0";
@@ -107,6 +108,50 @@ let reactUi = [
             }
         });
         return <SwitchDemo/>;
+    })(),
+    (()=>{
+        let AlertDemo = React.createClass({
+            getInitialState: function(){
+                return {
+                    visible: false
+                }
+            },
+            show: function(){
+                this.setState({
+                    visible: true
+                });
+            },
+            getDefaultProps: function(){
+                return {
+                    title: '标题',
+                    message: '确定要删除吗？',
+                    alertAction: [
+                        {
+                            name: '取消',
+                            clickAction: ()=>{
+                                console.log('取消');
+                            }
+                        },
+                        {
+                            name: '确定',
+                            clickAction: ()=>{
+                                console.log('确定');
+                            }
+                        }
+                    ]
+
+                }
+            },
+            render: function(){
+               return (
+                   <div>
+                       <span className="btn-secondary" onClick={this.show}>alertButton</span>
+                       <Alert visible={this.state.visible} {...this.props}/>
+                   </div>
+               )
+            }
+        });
+        return <AlertDemo/>;
     })()
 ];
 reactUi.map(item => initUi(item));
