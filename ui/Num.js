@@ -22,7 +22,7 @@ const Num = React.createClass({
         this.setState({
             defaultNumber: defaultNumber
         });
-        console.log(selectNumber(defaultNumber));
+        selectNumber(defaultNumber)
     },
     changeValue: function(){
 
@@ -35,7 +35,7 @@ const Num = React.createClass({
         this.setState({
             defaultNumber: defaultNumber
         });
-        console.log(selectNumber(defaultNumber));
+        selectNumber(defaultNumber)
     },
     render: function(){
         let{defaultNumber} = this.state;

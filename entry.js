@@ -13,12 +13,37 @@ let initUi = item => {
 };
 let reactUi = [
     (()=>{
-        let holiday = {
-            '3/8': '妇女节'
-        };
-        return <Calendar holiday = {holiday}/>
+        let CalendarDemo = React.createClass({
+            getDefaultProps: function(){
+                return {
+                    holiday: {
+                        '3/8': '妇女节'
+                    }
+                }
+            },
+            render: function(){
+                return <Calendar {...this.props}/>;
+            }
+        });
+        return <CalendarDemo/>
     })(),(()=>{
-        return <Num minNumber={1} maxNumber={9} defaultNumber={5} stepNumber={2}/>
+        let NumDemo = React.createClass({
+            getDefaultProps: function(){
+                return {
+                    minNumber: 1,
+                    maxNumber: 9,
+                    defaultNumber: 5,
+                    stepNumber: 2,
+                    selectNumber: (number) => {
+                        console.log(number);
+                    }
+                }
+            },
+            render: function(){
+                return <Num {...this.props}/>
+            }
+        });
+        return <NumDemo/>;
     })(),(()=>{
         let RadioButton = React.createClass({
             getDefaultProps: function(){
@@ -84,4 +109,4 @@ let reactUi = [
         return <SwitchDemo/>;
     })()
 ];
-reactUi.forEach(item => initUi(item));
+reactUi.map(item => initUi(item));
