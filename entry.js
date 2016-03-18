@@ -7,6 +7,7 @@ import Radio  from './ui/Radio';
 import Tab from './ui/Tab';
 import Switch from './ui/Switch';
 import Alert from './ui/Alert';
+import SlidePhoto from './ui/SlidePhoto';
 let initUi = item => {
     let div = document.createElement('div');
     div.style.padding = "10px 0";
@@ -152,6 +153,30 @@ let reactUi = [
             }
         });
         return <AlertDemo/>;
+    })(),
+    (()=>{
+        let SlideDemo = React.createClass({
+            getDefaultProps: function(){
+                return {
+                    data:[{
+                        url: 'http://images.cnitblog.com/blog/294743/201412/051803075458022.jpg',
+                        title: '图片1'
+                    },{
+                        url: 'http://images.cnitblog.com/blog/294743/201412/051803252488182.jpg',
+                        title: '图片2'
+                    },{
+                        url: 'http://images.cnitblog.com/blog/294743/201412/051803198737858.jpg',
+                        title: '图片3'
+                    }]
+                }
+            },
+            render: function(){
+                return(
+                    <div><SlidePhoto {...this.props}/></div>
+                )
+            }
+        });
+        return <SlideDemo/>
     })()
 ];
 reactUi.map(item => initUi(item));
