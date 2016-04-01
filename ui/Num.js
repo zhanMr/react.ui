@@ -25,7 +25,6 @@ const Num = React.createClass({
         selectNumber(defaultNumber)
     },
     changeValue: function(){
-de
     },
     subNumber: function(){
         let{defaultNumber} = this.state;
