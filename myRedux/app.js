@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import File from './file';
 import Button from './button';
+import Button2 from './button2';
 import * as action from './action';
 import {bindActionCreators} from 'redux';
 const App = React.createClass({
@@ -18,7 +19,8 @@ const App = React.createClass({
                 <File data={this.props.item}/>
                 <input />
                 <p onClick={this.addMyFile}>++</p>
-                <Button data={this.props.item} {...boundActionCreators} onAddClick={text => dispatch(action.addFiles(text))} />
+                <Button data={this.props.item} {...boundActionCreators}  />
+                <Button2 data={this.props.item} onActionClick={text=>dispatch(action.addFiles(text))}  />
             </div>
         )
     }
@@ -28,5 +30,4 @@ function select(state) {
         item: state.addFile
     };
 }
-
 export default connect(select)(App)
