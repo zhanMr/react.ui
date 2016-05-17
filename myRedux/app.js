@@ -8,7 +8,7 @@ import {bindActionCreators} from 'redux';
 const App = React.createClass({
     addMyFile: function(){
         const {dispatch} = this.props;
-        dispatch(action.addFiles('三国演义'));
+        dispatch(action.addFiles('西游记'));
     },
     render: function(){
         const {item,dispatch} = this.props;
