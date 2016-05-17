@@ -8,12 +8,32 @@ import Tab from './ui/Tab';
 import Switch from './ui/Switch';
 import Alert from './ui/Alert';
 import SlidePhoto from './ui/SlidePhoto';
+
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import todoApp from './myRedux/reducer';
+
+let store = createStore(todoApp);
+import App from './myRedux/app';
+
 let initUi = item => {
     let div = document.createElement('div');
     div.style.padding = "10px 0";
     ReactDOM.render(item, document.body.appendChild(div))
 };
 let reactUi = [
+    (()=>{
+        let MyRedux = React.createClass({
+            render: function(){
+                return (
+                    <Provider store={store}>
+                        <App/>
+                    </Provider>
+                )
+            }
+        });
+        return <MyRedux/>;
+    })(),
     (()=>{
         let CalendarDemo = React.createClass({
             getDefaultProps: function(){
